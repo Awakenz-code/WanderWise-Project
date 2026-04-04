@@ -17,14 +17,23 @@ WanderWise is a smart travel web application that helps users explore locations,
 Follow these steps to run the project locally:
 
 1️⃣ Clone the repository -
+
+```bash
 git clone https://github.com/your-username/wanderwise.git
 cd wanderwise
+```
 
 2️⃣ Install dependencies -
+
+```bash
 npm install
+```
 
 3️⃣ Start the development server -
+
+```bash
 npm start
+```
 
 4️⃣ Open in browser -
 The app will automatically open at: http://localhost:3000
