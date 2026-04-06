@@ -5,6 +5,8 @@ import riskIcon from "../assets/icons/risk.png";
 import skylineGreen from "../assets/skyline-green.png";
 import skylineOrange from "../assets/skyline-orange.png";
 import skylinePurple from "../assets/skyline-purple.png";
+import { Link } from "react-router-dom";
+
 
 export default function Features() {
   return (
@@ -44,9 +46,11 @@ hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl">
               Get details, hotspots, transport & risk insights for any Delhi location.
             </p>
 
-            <button className="mt-3 text-green-700 font-medium">
-              Check Location →
-            </button>
+            <Link to="/location" onClick={() => window.scrollTo(0, 0)}>
+  <button className="text-green-700 font-normal">
+    Check Location →
+  </button>
+</Link>
           </div>
         </div>
 
@@ -75,9 +79,11 @@ hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl">
               Compare average fares & prices to avoid overcharging.
             </p>
 
-            <button className="mt-3 text-orange-700 font-medium">
-              Check Prices →
-            </button>
+            <Link to="/price" onClick={() => window.scrollTo(0, 0)}>
+  <button className="text-orange-600 font-normal">
+    Check Prices →
+  </button>
+</Link>
           </div>
         </div>
 
@@ -102,16 +108,18 @@ hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl">
             <img src={riskIcon} className="w-14 h-14 mb-4" />
 
             <h3 className="font-bold text-lg text-purple-900">
-              Risk Incident Map
+              Risk Incidents
             </h3>
 
             <p className="mt-2 text-purple-800 text-sm">
               See real reported risks on map with time, type & risk level.
             </p>
 
-            <button className="mt-3 text-purple-700 font-medium">
-              Open Risk Map →
-            </button>
+            <Link to="/risk" onClick={() => window.scrollTo(0, 0)}>
+  <button className="text-purple-600 font-normal">
+    Open page →
+  </button>
+</Link>
           </div>
         </div>
 

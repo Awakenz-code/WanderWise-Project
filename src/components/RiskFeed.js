@@ -1,4 +1,5 @@
 import { FaExclamationTriangle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function RiskFeed() {
   const risks = [
@@ -35,9 +36,11 @@ export default function RiskFeed() {
           </h3>
         </div>
 
-        <span className="text-sm text-red-700 cursor-pointer hover:underline">
-          View All →
-        </span>
+        <Link to="/risk" onClick={() => window.scrollTo(0, 0)}>
+  <span className="text-sm text-red-700 cursor-pointer hover:underline">
+    View All →
+  </span>
+</Link>
       </div>
 
       {/* LIST */}

@@ -1,4 +1,5 @@
 import heroImg from "../assets/hero.png";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -52,13 +53,17 @@ hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl">
             </p>
 
             <div className="flex gap-4">
-              <button className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded-lg font-medium transition">
-                Get Location Info
-              </button>
+              <Link to="/location">
+  <button className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded-lg font-medium transition">
+    Get Location Info
+  </button>
+</Link>
 
-              <button className="bg-white text-black px-5 py-2 rounded-lg font-medium hover:bg-gray-200 transition">
-                View Risk Map
-              </button>
+              <Link to="/risk">
+  <button className="bg-white text-black px-5 py-2 rounded-lg font-medium hover:bg-gray-200 transition">
+    View Risks Oversight
+  </button>
+</Link>
             </div>
 
           </div>

@@ -1,52 +1,83 @@
+import { useNavigate } from "react-router-dom";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import DB from "../data/locationData";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 
 export default function LocationInfo() {
+  const [input, setInput] = useState("");
+  const [data, setData] = useState({
+  name: "Connaught Place",
+  areaType: "Shopping & Commercial Hub",
+  nearestMetro: "Rajiv Chowk",
+  popularFor: "Shopping, Food",
+  bestTime: "Morning & Evening",
+  safety: "Moderate Risk",
+})
+useEffect(() => {
+  if (DB["connaught place"]) {
+    setData(DB["connaught place"]);
+  }
+}, []);
+
+  const handleSearch = () => {
+    const key = input.toLowerCase().trim();
+
+    if (DB[key]) {
+      setData(DB[key]);
+    } else {
+      setData(null);
+      alert("Location not found");
+    }
+  };
+
+  
+
   return (
-    <div className="bg-green-100 border border-green-200 rounded-xl shadow w-full overflow-hidden hover:scale-[1.02] transition duration-300">
-
-      {/* HEADER (ATTACHED PERFECTLY) */}
-      <div className="bg-green-400 px-5 py-3 flex items-center gap-2 border-b border-green-300">
-        <FaMapMarkerAlt className="text-green-700" />
-        <h3 className="font-semibold text-green-900">
-          Location Information
-        </h3>
+    <div className="bg-green-100 border rounded-xl shadow w-full overflow-hidden transform transition duration-300 hover:scale-[1.02] hover:shadow-lg">
+      
+      {/* HEADER */}
+      <div className="bg-green-500 px-4 py-3 flex items-center gap-2">
+        <FaMapMarkerAlt />
+        <h3 className="font-semibold">Location Information</h3>
       </div>
 
-      {/* CONTENT */}
-      <div className="p-5">
+      {/* INPUT */}
+      <div className="flex gap-2 my-4 px-5">
+        <input
+          type="text"
+          placeholder="Connaught Place, New Delhi"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="flex-1 border rounded px-3 py-2"
+        />
 
-        {/* Input */}
-        <div className="flex gap-2 mb-4">
-          <input
-            type="text"
-            placeholder="Connaught Place, New Delhi"
-            className="flex-1 border rounded px-3 py-2"
-          />
-          <button className="bg-green-700 text-white px-4 rounded">
-            Get Info
-          </button>
-        </div>
+        <button
+  onClick={handleSearch}   // ✅ NOT navigate
+  className="bg-green-700 text-white px-4 rounded"
+>
+  Get Info
+</button>
+      </div>
 
-        {/* Info Card */}
-        <div className="bg-white rounded-lg p-3 shadow-sm">
-          <h3 className="font-semibold text-gray-800">
-            Connaught Place
-          </h3>
+      {/* RESULT CARD */}
+      {data && (
+        <div className="bg-white p-4 rounded shadow mx-5 mb-5">
+          <h3 className="font-bold text-lg">{data.name}</h3>
 
-          <ul className="text-sm mt-2 space-y-1 text-gray-600">
-            <li>• Area Type: Shopping & Commercial Hub</li>
-            <li>• Nearest Metro: Rajiv Chowk</li>
-            <li>• Popular For: Shopping, Food</li>
-            <li>• Best Time: Morning & Evening</li>
+          <ul className="text-sm mt-2 space-y-1">
+            <li><b>Area Type:</b> {data.areaType}</li>
+            <li><b>Nearest Metro:</b> {data.nearestMetro}</li>
+            <li><b>Popular For:</b> {data.popularFor}</li>
+            <li><b>Best Time:</b> {data.bestTime}</li>
           </ul>
-        </div>
 
-        {/* Risk */}
-        <div className="mt-3 bg-yellow-100 text-yellow-800 p-2 rounded text-sm">
-          ⚠ Moderate Risk: Crowded area, beware of overcharging
+          <div className="mt-3 bg-yellow-100 p-2 rounded text-sm">
+            ⚠ {data.risk}
+          </div>
         </div>
-
-      </div>
+      )}
     </div>
   );
 }
