@@ -8,7 +8,7 @@ export default function PriceCheckerPage() {
   const [selected, setSelected] = useState("Indian Food");
   const formatKey = (text) => text.toLowerCase();
   const fares = {
-        "airport|connaught place": { min: 350, max: 500, note: "Airport Express + Metro ₹100 recommended" },
+  "airport|connaught place": { min: 350, max: 500, note: "Airport Express + Metro ₹100 recommended" },
   "airport|paharganj": { min: 350, max: 500, note: "Airport Express to New Delhi Metro ₹100" },
   "airport|karol bagh": { min: 300, max: 450, note: "Airport Express + Blue Line cheaper" },
   "airport|saket": { min: 200, max: 300, note: "Closest major area from airport" },
@@ -28,6 +28,28 @@ export default function PriceCheckerPage() {
   "airport|south extension": { min: 220, max: 320, note: "~35 min, Yellow Line option" },
   "airport|defence colony": { min: 240, max: 340, note: "~40 min" },
   "airport|mayur vihar": { min: 500, max: 700, note: "Very long - Metro via Blue Line" },
+  // New fare entries
+
+"airport|india gate": { min: 180, max: 280, note: "Very close; central Delhi" },
+"airport|kashmere gate": { min: 300, max: 420, note: "North Delhi; metro interchange nearby" },
+"airport|seelampur": { min: 320, max: 450, note: "East Delhi; traffic can increase fare" },
+"airport|shastri park": { min: 300, max: 420, note: "Near Kashmere Gate; moderate distance" },
+
+"airport|gurudwara bangla sahib": { min: 200, max: 300, note: "Near CP; central location" },
+"airport|jama masjid": { min: 280, max: 400, note: "Old Delhi; traffic congestion possible" },
+"airport|red fort": { min: 300, max: 420, note: "Tourist area; peak hour surge likely" },
+"airport|qutub minar": { min: 220, max: 320, note: "South Delhi; relatively smooth route" },
+"airport|lotus temple": { min: 240, max: 340, note: "South Delhi; moderate traffic" },
+"airport|majnuka tila": { min: 400, max: 550, note: "Far north; longer ride" },
+"airport|gurudwara sheesh ganj": { min: 300, max: 420, note: "Old Delhi area; traffic heavy" },
+"airport|gurudwara nanak piao": { min: 320, max: 450, note: "North Delhi; mid-long distance" },
+"airport|marghat wale baba mandir": { min: 300, max: 420, note: "Near Old Delhi; congestion possible" },
+"airport|prachin hanuman mandir": { min: 200, max: 300, note: "Near CP; very central" },
+"airport|iskon temple": { min: 240, max: 340, note: "South Delhi; near Nehru Place" },
+"airport|lodi garden": { min: 200, max: 300, note: "Central; smooth route usually" },
+"airport|amrit udaan": { min: 120, max: 200, note: "Very close to airport" },
+"airport|botanical garden": { min: 450, max: 650, note: "Noida; expressway route" },
+"airport|delhi zoo": { min: 200, max: 300, note: "Central Delhi; near India Gate" },
   "connaught place|paharganj": { min: 60, max: 120, note: "Walk 12 min or Metro 1 stop" },
   "connaught place|karol bagh": { min: 80, max: 150, note: "Blue Line Metro faster" },
   "connaught place|saket": { min: 200, max: 300, note: "Yellow Line recommended" },
@@ -43,6 +65,39 @@ export default function PriceCheckerPage() {
   "connaught place|defence colony": { min: 160, max: 250, note: "~25 min" },
   "connaught place|mayur vihar": { min: 200, max: 300, note: "Blue Line Metro convenient" },
   "connaught place|janakpuri": { min: 200, max: 300, note: "Blue Line Metro faster" },
+  "connaught place|india gate": { min: 80, max: 150, note: "Very close; 5–10 min cab or auto" },
+  "connaught place|kashmere gate": { min: 150, max: 250, note: "Metro (Yellow+Red) faster; ~20 min" },
+  "connaught place|seelampur": { min: 200, max: 320, note: "East Delhi; traffic can increase time" },
+  "connaught place|shastri park": { min: 180, max: 300, note: "Near Kashmere Gate; Red Line metro option" },
+  "connaught place|gurudwara bangla sahib": { min: 50, max: 100, note: "Walkable (~10 min); no cab needed" },
+
+"connaught place|jama masjid": { min: 120, max: 200, note: "Old Delhi; traffic congestion possible" },
+
+"connaught place|red fort": { min: 130, max: 220, note: "Tourist route; peak hour delay likely" },
+
+"connaught place|qutub minar": { min: 250, max: 380, note: "Yellow Line Metro recommended" },
+
+"connaught place|lotus temple": { min: 220, max: 340, note: "Violet Line Metro or cab ~30 min" },
+
+"connaught place|majnuka tila": { min: 250, max: 380, note: "North Delhi; traffic varies" },
+
+"connaught place|gurudwara sheesh ganj": { min: 120, max: 200, note: "Same area as Red Fort; crowded" },
+
+"connaught place|gurudwara nanak piao": { min: 180, max: 280, note: "North Delhi; moderate distance" },
+
+"connaught place|marghat wale baba mandir": { min: 130, max: 220, note: "Near Old Delhi; traffic heavy" },
+
+"connaught place|prachin hanuman mandir": { min: 50, max: 100, note: "Very close; walking best option" },
+
+"connaught place|iskon temple": { min: 200, max: 320, note: "South Delhi; Nehru Place nearby" },
+
+"connaught place|lodi garden": { min: 80, max: 150, note: "Very close; ~10 min cab" },
+
+"connaught place|amrit udaan": { min: 180, max: 280, note: "Near airport; mid distance" },
+
+"connaught place|botanical garden": { min: 300, max: 450, note: "Noida; Blue Line metro best" },
+
+"connaught place|delhi zoo": { min: 100, max: 180, note: "Near India Gate; short ride" },
   "rohini|pitampura": { min: 80, max: 150, note: "Red Line 2-3 stops" },
   "rohini|connaught place": { min: 280, max: 420, note: "Red+Yellow Line Metro" },
   "rohini|karol bagh": { min: 200, max: 300, note: "Red + Blue Line interchange" },
@@ -190,6 +245,7 @@ export default function PriceCheckerPage() {
             value={from}
             onChange={(e) => setFrom(e.target.value)}
             className="w-full border rounded-lg px-3 py-2 mb-3 mt-1"
+            onKeyDown={(e) => e.key === "Enter" && handleFare()} 
           />
 
           <label className="text-sm text-gray-600">
@@ -199,6 +255,7 @@ export default function PriceCheckerPage() {
             value={to}
             onChange={(e) => setTo(e.target.value)}
             className="w-full border rounded-lg px-3 py-2 mb-4 mt-1"
+            onKeyDown={(e) => e.key === "Enter" && handleFare()} 
           />
 
           <button

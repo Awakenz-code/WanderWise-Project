@@ -129,6 +129,242 @@ const DB = {
     risk: "Low Risk: Safe residential area",
     highlights: ["Local Markets", "Parks"],
     transport: ["Metro: Mayur Vihar", "Autos & e-rickshaws"]
+  },
+
+  "Gurudwara bangla sahib": {
+    name: "Gurudwara Bangla Sahib",
+    areaType: "Religious",
+    nearestMetro: "Patel Chowk",
+    popularFor: "Spiritual, Langar, Sarovar",
+    bestTime: "Early Morning & Evening",
+    risk: "Low Risk: Well-managed, police presence",
+    highlights: ["Golden Sarovar", "Free Langar", "Museum", "24/7 Open"],
+    transport: ["Metro: Patel Chowk", "Bus", "Auto & Taxi"]
+  },
+  "jama masjid": {
+    name: "Jama Masjid",
+    areaType: "Religious & Heritage",
+    nearestMetro: "Jama Masjid (Yellow Line)",
+    popularFor: "Mughal Architecture, Friday Prayers, Street Food",
+    bestTime: "Morning & Late Afternoon",
+    risk: "Moderate Risk: Crowded, beware of touts",
+    highlights: ["Largest Mosque in India", "Minaret Views", "Nearby Karim's Restaurant"],
+    transport: ["Metro: Jama Masjid", "Cycle Rickshaw", "Auto"]
+  },
+  "red fort": {
+    name: "Red Fort",
+    areaType: "Heritage & Monument",
+    nearestMetro: "Lal Quila (Red Fort)",
+    popularFor: "Mughal History, Independence Day, Light & Sound Show",
+    bestTime: "Morning (7AM-11AM)",
+    risk: "Low Risk: ASI Protected, security present",
+    highlights: ["Diwan-i-Aam", "Diwan-i-Khas", "Lahori Gate", "Sound & Light Show"],
+    transport: ["Metro: Lal Quila", "Bus", "Auto & Taxi"]
+  },
+  "qutub minar": {
+    name: "Qutub Minar",
+    areaType: "UNESCO Heritage Monument",
+    nearestMetro: "Qutub Minar",
+    popularFor: "Tallest Brick Minaret, Indo-Islamic Architecture",
+    bestTime: "Morning (Sunrise to 11AM)",
+    risk: "Low Risk: Well-patrolled tourist area",
+    highlights: ["73m Tall Minaret", "Iron Pillar", "Quwwat-ul-Islam Mosque", "Iltutmish's Tomb"],
+    transport: ["Metro: Qutub Minar", "Auto", "Cab/Ola/Uber"]
+  },
+  "lotus temple": {
+    name: "Lotus Temple",
+    areaType: "Religious & Architectural",
+    nearestMetro: "Kalkaji Mandir",
+    popularFor: "Bahai House of Worship, Meditation, Architecture",
+    bestTime: "Morning & Late Afternoon",
+    risk: "Low Risk: Clean, secure premises",
+    highlights: ["Lotus-shaped Architecture", "Silent Meditation Hall", "Lush Gardens"],
+    transport: ["Metro: Kalkaji Mandir", "Auto", "DTC Bus"]
+  },
+  "majnu ka tila": {
+    name: "Majnu Ka Tila",
+    areaType: "Cultural & Residential",
+    nearestMetro: "Vidhan Sabha",
+    popularFor: "Tibetan Culture, Cafes, Budget Shopping",
+    bestTime: "Late Morning to Evening",
+    risk: "Low Risk: Peaceful Tibetan colony",
+    highlights: ["Tibetan Monastery", "Momos & Thukpa", "Handicraft Shops", "Cafe Culture"],
+    transport: ["Metro: Vidhan Sabha", "Auto", "Bus from ISBT"]
+  },
+  "Gurudwara sheesh ganj": {
+    name: "Sheesh Ganj Gurudwara",
+    areaType: "Religious & Heritage",
+    nearestMetro: "Chandni Chowk",
+    popularFor: "Sikh Martyrdom Site, Langar, Chandni Chowk",
+    bestTime: "Early Morning & Evening",
+    risk: "Low Risk: Central location, high footfall",
+    highlights: ["Historical Martyrdom Site", "Free Langar", "Old Delhi Heritage Walk"],
+    transport: ["Metro: Chandni Chowk", "Cycle Rickshaw", "Bus"]
+  },
+  "Gurudwara nanak piao": {
+    name: "Gurudwara Nanak Piao",
+    areaType: "Religious & Heritage",
+    nearestMetro: "GTB Nagar",
+    popularFor: "Guru Nanak's Historical Site, Langar, Peace",
+    bestTime: "Morning & Evening",
+    risk: "Low Risk: Calm spiritual environment",
+    highlights: ["Historic Water Well", "Free Langar", "Peaceful Ambience"],
+    transport: ["Metro: GTB Nagar", "Auto", "Bus"]
+  },
+  "marghat wale baba mandir": {
+    name: "Marghat Wale Baba Mandir",
+    areaType: "Religious",
+    nearestMetro: "Kashmere Gate",
+    popularFor: "Local Devotion, Cremation Ground Deity",
+    bestTime: "Morning & Evening (Aarti Time)",
+    risk: "Low Risk: Local neighbourhood temple",
+    highlights: ["Unique Deity", "Morning & Evening Aarti", "Local Cultural Experience"],
+    transport: ["Metro: Kashmere Gate", "Auto", "E-Rickshaw"]
+  },
+  "prachin hanuman mandir": {
+    name: "Prachin Hanuman Mandir",
+    areaType: "Religious",
+    nearestMetro: "Connaught Place",
+    popularFor: "Ancient Hanuman Temple, Tuesday Prayers, Central Delhi",
+    bestTime: "Early Morning & Tuesday Evenings",
+    risk: "Low Risk: Prime central location",
+    highlights: ["One of Delhi's Oldest Temples", "Massive Tuesday Crowds", "Near Jantar Mantar"],
+    transport: ["Metro: Connaught Place / Rajiv Chowk", "Bus", "Auto"]
+  },
+  "iskcon temple delhi": {
+    name: "ISKCON Temple (Sri Sri Radha Parthasarathi Mandir)",
+    areaType: "Religious & Cultural",
+    nearestMetro: "Nehru Place",
+    popularFor: "Krishna Devotion, Prasadam, Spiritual Discourses",
+    bestTime: "Morning & Evening Aarti (6AM & 7PM)",
+    risk: "Low Risk: Secure, well-maintained premises",
+    highlights: ["Deity Darshan", "Vegetarian Restaurant", "Gift Shop", "Weekend Programs"],
+    transport: ["Metro: Nehru Place", "Auto", "Cab/Ola/Uber"]
+  },
+  "iskcon temple dwarka": {
+    name: "ISKCON Temple Dwarka",
+    areaType: "Religious",
+    nearestMetro: "Dwarka Sector 10",
+    popularFor: "Peaceful Prayers, Community Programs",
+    bestTime: "Morning & Evening",
+    risk: "Low Risk: Residential, calm area",
+    highlights: ["Beautiful Deity Hall", "Bhagavad Gita Classes", "Sunday Feast"],
+    transport: ["Metro: Dwarka Sector 10", "Auto", "Bus"]
+  },
+  "iskcon temple punjabi bagh": {
+    name: "ISKCON Temple Punjabi Bagh",
+    areaType: "Religious",
+    nearestMetro: "Punjabi Bagh (Green Line)",
+    popularFor: "Morning Aarti, Hare Krishna Chanting",
+    bestTime: "Early Morning",
+    risk: "Low Risk: Safe residential colony",
+    highlights: ["Intimate Temple Setting", "Prasadam Distribution", "Kirtan Programs"],
+    transport: ["Metro: Punjabi Bagh", "Auto", "Bus"]
+  },
+  "iskcon temple rohini": {
+    name: "ISKCON Temple Rohini",
+    areaType: "Religious",
+    nearestMetro: "Rohini East / West",
+    popularFor: "Devotional Programs, Community Gatherings",
+    bestTime: "Evening",
+    risk: "Low Risk: Safe suburban area",
+    highlights: ["Large Community Hall", "Cultural Programs", "Prasadam"],
+    transport: ["Metro: Rohini East", "Auto", "E-Rickshaw"]
+  },
+  "lodi garden": {
+    name: "Lodi Garden",
+    areaType: "Heritage Park",
+    nearestMetro: "Jor Bagh / Khan Market",
+    popularFor: "Jogging, Picnics, Lodi-era Tombs, Birdwatching",
+    bestTime: "Early Morning & Evening",
+    risk: "Low Risk: Well-maintained, patrolled park",
+    highlights: ["Muhammad Shah's Tomb", "Shisha Gumbad", "Seasonal Flora", "Birdwatching Trails"],
+    transport: ["Metro: Jor Bagh / Khan Market", "Auto", "Cab"]
+  },
+  "amrit udyan": {
+    name: "Amrit Udyan (Mughal Gardens)",
+    areaType: "Botanical Garden & State Heritage",
+    nearestMetro: "Central Secretariat",
+    popularFor: "Seasonal Flowers, Presidential Estate, Annual Public Opening",
+    bestTime: "Morning (Feb-March during public opening)",
+    risk: "Low Risk: High-security Presidential zone",
+    highlights: ["Tulip & Rose Gardens", "Herbal Garden", "Musical Garden", "Inside Rashtrapati Bhavan"],
+    transport: ["Metro: Central Secretariat", "Auto", "Bus"]
+  },
+  "botanical garden noida": {
+    name: "Botanical Garden",
+    areaType: "Nature & Recreation",
+    nearestMetro: "Botanical Garden (Blue/Aqua Line)",
+    popularFor: "Greenery, Nature Walks, Family Picnics",
+    bestTime: "Morning & Late Afternoon",
+    risk: "Low Risk: Open green space",
+    highlights: ["Diverse Plant Species", "Jogging Tracks", "Lake & Boating", "Children's Park"],
+    transport: ["Metro: Botanical Garden", "Auto", "Bus from Noida"]
+  },
+  "delhi zoo": {
+    name: "Delhi Zoo (National Zoological Park)",
+    areaType: "Wildlife & Recreation",
+    nearestMetro: "Pragati Maidan",
+    popularFor: "Wildlife, Family Outings, White Tigers",
+    bestTime: "Morning (9AM-11AM, avoid noon heat)",
+    risk: "Low Risk: Supervised, fenced enclosures",
+    highlights: ["White Tigers", "African Safari Zone", "Reptile House", "Aviary"],
+    transport: ["Metro: Pragati Maidan", "Bus", "Auto & Taxi"]
+  },
+
+  "india gate": {
+    name: "India Gate",
+    areaType: "National Monument",
+    nearestMetro: "Central Secretariat",
+    popularFor: "War Memorial, Picnics, Kartavya Path, Evening Walks",
+    bestTime: "Evening & Night",
+    risk: "Low Risk: High security, central government zone",
+    highlights: ["War Memorial Arch", "Amar Jawan Jyoti", "Kartavya Path", "Boat Rides"],
+    transport: ["Metro: Central Secretariat", "Bus", "Auto & Cab"]
+  },
+
+  "kashmere gate": {
+    name: "Kashmere Gate",
+    areaType: "Heritage & Transit Hub",
+    nearestMetro: "Kashmere Gate",
+    popularFor: "1857 Mutiny History, ISBT, Inter-city Buses",
+    bestTime: "Morning & Evening",
+    risk: "Moderate Risk: Busy transit area, watch belongings",
+    highlights: ["1857 Siege Memorial", "Mughal-era Gate", "ISBT Bus Terminal", "Heritage Walk"],
+    transport: ["Metro: Kashmere Gate (Yellow/Red/Violet)", "DTC Bus", "Auto & E-Rickshaw"]
+  },
+
+  "seelampur": {
+    name: "Seelampur",
+    areaType: "Residential & Commercial",
+    nearestMetro: "Seelampur",
+    popularFor: "Electronics Market, Mobile Resale, Local Commerce",
+    bestTime: "Morning to Afternoon",
+    risk: "High Risk: Dense market area, watch belongings",
+    highlights: ["Largest Mobile Resale Market", "Wholesale Electronics", "Local Street Food"],
+    transport: ["Metro: Seelampur (Red Line)", "DTC Bus", "Auto & E-Rickshaw"]
+  },
+
+  "adgips": {
+    name: "ADGIPS (Dr. Akhilesh Das Gupta Institute of Professional Studies)",
+    areaType: "Educational",
+    nearestMetro: "Rohini East",
+    popularFor: "Engineering & Management College, Student Life, Campus Culture",
+    bestTime: "Weekday Mornings",
+    risk: "Low Risk: Secure college campus",
+    highlights: ["GGSIPU Affiliated College", "Engineering & MBA Programs", "Student Canteen", "Annual College Fest"],
+    transport: ["Metro: Rohini East (Red Line)", "DTC Bus", "Auto & E-Rickshaw"]
+  },
+
+  "shastri park": {
+    name: "Shastri Park",
+    areaType: "Residential & Transit",
+    nearestMetro: "Shastri Park",
+    popularFor: "Local Markets, Residential Area, Daily Commute Hub",
+    bestTime: "Morning & Evening",
+    risk: "Moderate Risk: Busy local area, stay alert at night",
+    highlights: ["Local Weekly Market", "Yamuna River Nearby", "Affordable Street Food", "Bus Terminal"],
+    transport: ["Metro: Shastri Park (Red Line)", "DTC Bus", "Auto & E-Rickshaw"]
   }
 };
 

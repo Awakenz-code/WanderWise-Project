@@ -65,6 +65,7 @@ export default function LocationPage() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="flex-1 border rounded-lg px-4 py-3 text-lg w-full"
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
           <button
             onClick={handleSearch}

@@ -30,6 +30,25 @@ export default function PriceChecker() {
   "airport–south extension": 14,
   "airport–defence colony": 15,
   "airport–mayur vihar": 30,
+  "airport–gurudwara bangla sahib": 14,
+  "airport–jama masjid": 20,
+  "airport–red fort": 21,
+  "airport–qutub minar": 13,
+  "airport–lotus temple": 16,
+  "airport–majnu ka tila": 24,
+  "airport–gurudwara sheesh ganj": 20,
+  "airport–gurudwara nanak piao": 22,
+  "airport–marghat wale baba mandir": 21,
+  "airport–prachin hanuman mandir": 15,
+  "airport–iskon temple": 16,
+  "airport–lodi garden": 13,
+  "airport–amrit udaan": 5,
+  "airport–botanical garden": 30,
+  "airport–delhi zoo": 15,
+  "airport–india gate": 14,
+  "airport–kashmere gate": 22,
+  "airport–seelampur": 24,
+  "airport–shastri park": 23,
 
   // Connaught Place routes
   "connaught place–paharganj": 2,
@@ -47,6 +66,25 @@ export default function PriceChecker() {
   "connaught place–defence colony": 9,
   "connaught place–mayur vihar": 13,
   "connaught place–janakpuri": 15,
+  "connaught place–gurudwara bangla sahib": 1,
+  "connaught place–jama masjid": 6,
+  "connaught place–red fort": 7,
+  "connaught place–qutub minar": 14,
+  "connaught place–lotus temple": 11,
+  "connaught place–majnu ka tila": 10,
+  "connaught place–gurudwara sheesh ganj": 6,
+  "connaught place–gurudwara nanak piao": 12,
+  "connaught place–marghat wale baba mandir": 7,
+  "connaught place–prachin hanuman mandir": 1,
+  "connaught place–iskon temple": 10,
+  "connaught place–lodi garden": 4,
+  "connaught place–amrit udaan": 12,
+  "connaught place–botanical garden": 15,
+  "connaught place–delhi zoo": 5,
+  "connaught place–india gate": 3,
+  "connaught place–kashmere gate": 9,
+  "connaught place–seelampur": 11,
+  "connaught place–shastri park": 10,
 
   // Rohini routes
   "rohini–pitampura": 4,
@@ -92,6 +130,64 @@ export default function PriceChecker() {
   // East Delhi
   "mayur vihar–lajpat nagar": 10,
   "mayur vihar–noida sector 18": 6,
+
+  // Central Delhi cluster
+"gurudwara bangla sahib-connaught place": 1,
+"gurudwara bangla sahib-paharganj": 3,
+"gurudwara bangla sahib-karol bagh": 5,
+
+"prachin hanuman mandir-connaught place": 1,
+"prachin hanuman mandir-paharganj": 2,
+
+"jama masjid-red fort": 1,
+"jama masjid-connaught place": 6,
+"jama masjid-paharganj": 3,
+
+"red fort-connaught place": 7,
+"red fort-paharganj": 5,
+
+"gurudwara sheesh ganj-jama masjid": 1,
+"gurudwara sheesh ganj-red fort": 1,
+
+// South Delhi cluster
+"qutub minar-saket": 6,
+"qutub minar-hauz khas": 5,
+"qutub minar-greater kailash": 8,
+
+"lotus temple-saket": 3,
+"lotus temple-greater kailash": 2,
+"lotus temple-lajpat nagar": 4,
+
+"iskon temple-greater kailash": 2,
+"iskon temple-saket": 3,
+"iskon temple-lajpat nagar": 5,
+
+"lodi garden-connaught place": 4,
+"lodi garden-lajpat nagar": 5,
+"lodi garden-hauz khas": 6,
+// North Delhi cluster
+"majnuka tila-rohini": 18,
+"majnuka tila-pitampura": 15,
+"majnuka tila-connaught place": 10,
+
+"gurudwara nanak piao-rohini": 10,
+"gurudwara nanak piao-pitampura": 6,
+"gurudwara nanak piao-karol bagh": 7,
+
+// Special/unique places
+"marghat wale baba mandir-red fort": 2,
+"marghat wale baba mandir-jama masjid": 2,
+
+"amrit udaan-airport": 5,
+"amrit udaan-dwarka": 4,
+
+"botanical garden-noida sector 18": 3,
+"botanical garden-mayur vihar": 5,
+"botanical garden-connaught place": 15,
+
+"delhi zoo-connaught place": 5,
+"delhi zoo-lajpat nagar": 6,
+"delhi zoo-mayur vihar": 7,
   };
 
   const handleCheck = () => {
@@ -156,12 +252,14 @@ export default function PriceChecker() {
             value={from}
             onChange={(e) => setFrom(e.target.value)}
             className="w-full border rounded px-3 py-2"
+            onKeyDown={(e) => e.key === "Enter" && handleCheck()}
           />
 
           <input
             value={to}
             onChange={(e) => setTo(e.target.value)}
             className="w-full border rounded px-3 py-2"
+            onKeyDown={(e) => e.key === "Enter" && handleCheck()}
           />
 
           <button

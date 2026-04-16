@@ -339,6 +339,7 @@ const handleSubmit = () => {
             <select
   value={type}
   onChange={(e) => setType(e.target.value)}
+  onKeyDown={(e) => e.key === "Enter" && handleSubmit()}  
   className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
 >
   <option value="">Select type...</option>
@@ -355,12 +356,14 @@ const handleSubmit = () => {
   value={location}
   onChange={(e) => setLocation(e.target.value)}
   placeholder="e.g. Connaught Place, Delhi"
+  onKeyDown={(e) => e.key === "Enter" && handleSubmit()}  
   className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
 />
 
             <select
   value={risk}
   onChange={(e) => setRisk(e.target.value)}
+  onKeyDown={(e) => e.key === "Enter" && handleSubmit()}  
   className={`border rounded-lg p-3 w-full focus:outline-none
     ${
       risk === "High"
@@ -378,6 +381,7 @@ const handleSubmit = () => {
             <input
               placeholder="Anonymous"
               className="border rounded-lg p-3"
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}  
             />
 
           </div>

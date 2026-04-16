@@ -50,6 +50,7 @@ useEffect(() => {
           placeholder="Connaught Place, New Delhi"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()} // ✅ ENTER KEY
           className="flex-1 border rounded px-3 py-2"
         />
 
@@ -73,9 +74,19 @@ useEffect(() => {
             <li><b>Best Time:</b> {data.bestTime}</li>
           </ul>
 
-          <div className="mt-3 bg-yellow-100 p-2 rounded text-sm">
-            ⚠ {data.risk}
-          </div>
+          <div className={`mt-3 p-2 rounded text-sm font-medium ${
+  (data.risk || "").toLowerCase().includes("low") && !(data.risk || "").toLowerCase().includes("medium")
+    ? "bg-green-100 text-green-700"
+    : (data.risk || "").toLowerCase().includes("medium") || (data.risk || "").toLowerCase().includes("moderate")
+    ? "bg-yellow-100 text-yellow-700"
+    : "bg-red-100 text-red-700"
+}`}>
+  {(data.risk || "").toLowerCase().includes("low") && !(data.risk || "").toLowerCase().includes("medium")
+    ? "✅" 
+    : (data.risk || "").toLowerCase().includes("medium") || (data.risk || "").toLowerCase().includes("moderate")
+    ? "⚠️" 
+    : "🔴"} {data.risk || "No risk data"}
+</div>
         </div>
       )}
     </div>
