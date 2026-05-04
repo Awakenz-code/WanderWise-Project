@@ -14,18 +14,32 @@ export default function LocationPage() {
   transport: ["Metro: Mayur Vihar", "Autos & e-rickshaws"],
   highlights: ["Local Markets", "Parks"],
 });
+  const [suggestions, setSuggestions] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const locationList = Object.keys(DB);
+  const selectSuggestion = (value) => {
+  setInput(value);
+  setSuggestions([]);
+};
 
 
 
-  const handleSearch = () => {
-    const key = input.toLowerCase().trim();
-    if (DB[key]) {
-      setData(DB[key]);
-    } else {
-      setData(null);
-      alert("Location not found ❌");
-    }
-  };
+  const handleSearch = (customInput) => {
+  const key = (customInput || input).toLowerCase().trim();
+
+  const match = Object.keys(DB).find(
+    (k) =>
+      k === key ||
+      DB[k].name.toLowerCase() === key
+  );
+
+  if (match) {
+    setData(DB[match]);
+  } else {
+    setData(null);
+    alert("Location not found ❌");
+  }
+};
 
   const getRiskStyle = (riskText) => {
     if (!riskText) return "bg-gray-100 text-gray-700";
@@ -58,23 +72,91 @@ export default function LocationPage() {
 
       {/* SEARCH */}
       <div className="px-6 md:px-12 lg:px-20 py-6 w-full">
-        <div className="flex gap-3 w-full">
-          <input
-            type="text"
-            placeholder="Enter location (e.g. Mayur Vihar)"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="flex-1 border rounded-lg px-4 py-3 text-lg w-full"
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-          />
-          <button
-            onClick={handleSearch}
-            className="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-800 transition"
-          >
-            Get Info
-          </button>
-        </div>
+  <div className="flex gap-3 w-full relative items-center">
+
+    {/* Input Wrapper */}
+    <div className="relative flex-1">
+      
+      {/* Search Icon */}
+      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+        🔍
+      </span>
+
+      <input
+        type="text"
+        placeholder="Search any Delhi location... (e.g. Mayur Vihar)"
+        value={input}
+        onChange={(e) => {
+  const value = e.target.value;
+  setInput(value);
+
+  if (!value.trim()) {
+    setSuggestions([]);
+    return;
+  }
+
+  const filtered = locationList.filter((loc) =>
+    loc.toLowerCase().includes(value.toLowerCase())
+  );
+
+  setSuggestions(filtered.slice(0, 5));
+  setActiveIndex(-1);
+}}
+        onKeyDown={(e) => {
+  if (e.key === "ArrowDown") {
+    setActiveIndex((prev) =>
+      prev < suggestions.length - 1 ? prev + 1 : prev
+    );
+  } else if (e.key === "ArrowUp") {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : -1));
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+
+    if (activeIndex >= 0) {
+      const selected = suggestions[activeIndex];
+
+      setInput(selected);
+      setSuggestions([]);
+
+      // 🔥 directly search using selected value
+      handleSearch(selected);
+    } else {
+      handleSearch();
+    }
+  }
+}}
+        className="w-full pl-12 pr-4 py-3 text-lg rounded-full border border-gray-300 
+        focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 
+        transition-all duration-200 shadow-sm"
+      />
+      {suggestions.length > 0 && (
+  <div className="absolute top-full left-0 w-full bg-white border mt-2 rounded-xl shadow-lg z-10 overflow-hidden">
+    {suggestions.map((s, i) => (
+      <div
+        key={i}
+        onClick={() => selectSuggestion(s)}
+        className={`px-4 py-3 cursor-pointer transition ${
+          i === activeIndex ? "bg-green-100" : "hover:bg-gray-100"
+        }`}
+      >
+        {DB[s].name}
       </div>
+    ))}
+  </div>
+)}
+    </div>
+
+    {/* Button */}
+    <button
+      onClick={handleSearch}
+      className="bg-green-700 text-white px-6 py-3 rounded-full 
+      hover:bg-green-700 active:scale-95 transition-all duration-200 shadow-md"
+    >
+      Get Info
+    </button>
+
+  </div>
+</div>
 
       {/* RESULT */}
       {data && (

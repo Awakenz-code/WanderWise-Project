@@ -5,6 +5,9 @@ export default function PriceCheckerPage() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [fare, setFare] = useState(null);
+  const [fromSuggestions, setFromSuggestions] = useState([]);
+  const [toSuggestions, setToSuggestions] = useState([]);
+  const [toIndex, setToIndex] = useState(-1);
   const [selected, setSelected] = useState("Indian Food");
   const formatKey = (text) => text.toLowerCase();
   const fares = {
@@ -127,6 +130,13 @@ export default function PriceCheckerPage() {
   "mayur vihar|noida sector 18": { min: 150, max: 220, note: "Blue Line convenient" },
 };
 
+  const getDestinations = (source) => {
+  const src = source.toLowerCase().trim();
+
+  return Object.keys(fares)
+    .filter(key => key.startsWith(src + "|"))
+    .map(key => key.split("|")[1]);
+};
   const handleFare = () => {
   if (!from || !to) return;
 
@@ -139,6 +149,7 @@ export default function PriceCheckerPage() {
   const reverseKey = `${toKey}|${fromKey}`;
 
   const result = fares[routeKey] || fares[reverseKey];
+  
 
   if (result) {
     setFare(result);
@@ -220,6 +231,10 @@ export default function PriceCheckerPage() {
   }
 };
 
+const sources = Array.from(
+  new Set(Object.keys(fares).map(k => k.split("|")[0]))
+);
+
   return (
     <div className="min-h-screen w-full">
 
@@ -243,20 +258,108 @@ export default function PriceCheckerPage() {
           <label className="text-sm text-gray-600">From Location</label>
           <input
             value={from}
-            onChange={(e) => setFrom(e.target.value)}
+            onChange={(e) => {
+  const value = e.target.value;
+  setFrom(value);
+
+  if (!value.trim()) {
+    setFromSuggestions([]);
+    return;
+  }
+
+  const filtered = sources.filter(loc =>
+    loc.toLowerCase().includes(value.toLowerCase())
+  );
+
+  setFromSuggestions(filtered);
+}}
             className="w-full border rounded-lg px-3 py-2 mb-3 mt-1"
             onKeyDown={(e) => e.key === "Enter" && handleFare()} 
           />
+
+          {fromSuggestions.length > 0 && (
+  <div className="border rounded bg-white">
+    {fromSuggestions.map((s, i) => (
+      <div
+        key={i}
+        onClick={() => {
+          setFrom(s);
+          setFromSuggestions([]);
+        }}
+        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+      >
+        {s}
+      </div>
+    ))}
+  </div>
+)}
 
           <label className="text-sm text-gray-600">
             To Location / Service
           </label>
           <input
             value={to}
-            onChange={(e) => setTo(e.target.value)}
+            onChange={(e) => {
+  const value = e.target.value;
+  setTo(value);
+
+  if (!value.trim() || !from.trim()) {
+    setToSuggestions([]);
+    return;
+  }
+
+  const filtered = getDestinations(from).filter(loc =>
+    loc.toLowerCase().includes(value.toLowerCase())
+  );
+
+  setToSuggestions(filtered);
+  setToIndex(-1); // ✅ ADD THIS
+}}
             className="w-full border rounded-lg px-3 py-2 mb-4 mt-1"
-            onKeyDown={(e) => e.key === "Enter" && handleFare()} 
+            onKeyDown={(e) => {
+  if (e.key === "ArrowDown") {
+    e.preventDefault(); // ✅ HERE
+    setToIndex((prev) =>
+      prev < toSuggestions.length - 1 ? prev + 1 : prev
+    );
+  } 
+  else if (e.key === "ArrowUp") {
+    e.preventDefault(); // ✅ HERE
+    setToIndex((prev) => (prev > 0 ? prev - 1 : -1));
+  } 
+  else if (e.key === "Enter") {
+    e.preventDefault();
+
+    if (toIndex >= 0) {
+      const selected = toSuggestions[toIndex];
+      setTo(selected);
+      setToSuggestions([]);
+      setToIndex(-1); // ✅ reset
+    } else {
+      handleFare();
+    }
+  }
+}}
           />
+
+          {toSuggestions.length > 0 && (
+  <div className="border rounded bg-white">
+    {toSuggestions.map((s, i) => (
+  <div
+    key={i}
+    onClick={() => {
+      setTo(s);
+      setToSuggestions([]);
+    }}
+    className={`px-3 py-2 cursor-pointer ${
+      i === toIndex ? "bg-orange-200" : "hover:bg-gray-100"
+    }`}
+  >
+    {s}
+  </div>
+))}
+  </div>
+)}
 
           <button
             onClick={handleFare}

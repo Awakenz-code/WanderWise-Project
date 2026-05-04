@@ -131,7 +131,7 @@ const DB = {
     transport: ["Metro: Mayur Vihar", "Autos & e-rickshaws"]
   },
 
-  "Gurudwara bangla sahib": {
+  "gurudwara bangla sahib": {
     name: "Gurudwara Bangla Sahib",
     areaType: "Religious",
     nearestMetro: "Patel Chowk",
@@ -191,18 +191,18 @@ const DB = {
     highlights: ["Tibetan Monastery", "Momos & Thukpa", "Handicraft Shops", "Cafe Culture"],
     transport: ["Metro: Vidhan Sabha", "Auto", "Bus from ISBT"]
   },
-  "Gurudwara sheesh ganj": {
-    name: "Sheesh Ganj Gurudwara",
-    areaType: "Religious & Heritage",
+  "gurudwara sis ganj": {
+    name: "Gurudwara Sis Ganj Sahib",
+    areaType: "Religious & Tourist",
     nearestMetro: "Chandni Chowk",
-    popularFor: "Sikh Martyrdom Site, Langar, Chandni Chowk",
-    bestTime: "Early Morning & Evening",
-    risk: "Low Risk: Central location, high footfall",
-    highlights: ["Historical Martyrdom Site", "Free Langar", "Old Delhi Heritage Walk"],
-    transport: ["Metro: Chandni Chowk", "Cycle Rickshaw", "Bus"]
-  },
-  "Gurudwara nanak piao": {
-    name: "Gurudwara Nanak Piao",
+    popularFor: "Sikh Pilgrimage Site, Historical Significance, Langar, Old Delhi Visit",
+    bestTime: "Morning & Evening",
+    risk: "Moderate Risk: Very crowded area, beware of pickpocketing and heavy traffic",
+    highlights: ["Historic Gurudwara", "Langar Service", "Chandni Chowk Market", "Red Fort Nearby", "Street Food"],
+    transport: ["Metro: Chandni Chowk (Yellow Line)", "E-Rickshaw", "Cycle Rickshaw", "Walking (narrow lanes)"]
+},
+  "gurudwara nanak piao": {
+    name: "Gurudwara Nanak Piao Sahib",
     areaType: "Religious & Heritage",
     nearestMetro: "GTB Nagar",
     popularFor: "Guru Nanak's Historical Site, Langar, Peace",
@@ -365,7 +365,98 @@ const DB = {
     risk: "Moderate Risk: Busy local area, stay alert at night",
     highlights: ["Local Weekly Market", "Yamuna River Nearby", "Affordable Street Food", "Bus Terminal"],
     transport: ["Metro: Shastri Park (Red Line)", "DTC Bus", "Auto & E-Rickshaw"]
-  }
+  },
+
+  "rohini": {
+    name: "Rohini",
+    areaType: "Residential & Commercial",
+    nearestMetro: "Rohini West / Rohini East",
+    popularFor: "Residential Area, Shopping Complexes, Parks, Family Living",
+    bestTime: "Evening",
+    risk: "Low to Moderate Risk: Generally safe, but stay cautious in less crowded areas at night",
+    highlights: ["DDA Parks", "Unity One Mall", "Japanese Park", "Sector Markets", "Adventure Island Nearby"],
+    transport: ["Metro: Rohini West & East (Red Line)", "DTC Bus", "Auto & E-Rickshaw"]
+},
+"iit delhi": {
+  name: "IIT Delhi",
+  areaType: "Educational Institution & Campus Area",
+  nearestMetro: "Hauz Khas",
+  popularFor: "Premier engineering institute, research, cultural and tech fests",
+  bestTime: "Morning to Evening (Campus hours); Fest times for vibrant experience",
+  risk: "Low Risk: Secure campus with restricted entry; follow entry protocols",
+  highlights: [
+    "Main Campus (Hauz Khas)",
+    "Dogra Hall",
+    "Central Library",
+    "Lecture Hall Complex",
+    "SAC (Student Activity Center)"
+  ],
+  transport: [
+    "Metro: Hauz Khas (Yellow Line, Magenta Line)",
+    "Bus: Multiple DTC routes via Aurobindo Marg",
+    "Auto and cab services available"
+  ]
+},
+
+"pitampura": {
+  name: "Pitampura",
+  areaType: "Residential & Commercial Area",
+  nearestMetro: "Pitampura",
+  popularFor: "Netaji Subhash Place (NSP), shopping hubs, cafes, and TV Tower landmark",
+  bestTime: "Evening for markets and food spots; Morning for parks",
+  risk: "Low to Moderate Risk: Generally safe, but crowded markets require basic caution",
+  highlights: [
+    "Netaji Subhash Place (NSP)",
+    "Dilli Haat Pitampura",
+    "Pitampura TV Tower",
+    "District Park Pitampura"
+  ],
+  transport: [
+    "Metro: Pitampura (Red Line), Netaji Subhash Place (Red & Pink Line interchange)",
+    "Bus: Well-connected via Ring Road and Outer Ring Road",
+    "Auto and cab services easily available"
+  ]
+},
+
+"adarsh nagar": {
+  name: "Adarsh Nagar",
+  areaType: "Residential & Local Market Area",
+  nearestMetro: "Adarsh Nagar",
+  popularFor: "Affordable housing, Azadpur Mandi proximity, local street markets",
+  bestTime: "Morning for mandi activity; Evening for local shopping and food",
+  risk: "Moderate Risk: Busy roads and market areas; watch for traffic and pickpocketing in crowded spots",
+  highlights: [
+    "Azadpur Mandi",
+    "Adarsh Nagar Market",
+    "Nearby Jahangirpuri area",
+    "Local parks and temples"
+  ],
+  transport: [
+    "Metro: Adarsh Nagar (Yellow Line)",
+    "Bus: Good connectivity via GT Karnal Road",
+    "Auto and e-rickshaw services widely available"
+  ]
+},
+
+"vasundhara enclave": {
+  name: "Vasundhara Enclave",
+  areaType: "Residential & Gated Society Area",
+  nearestMetro: "New Ashok Nagar",
+  popularFor: "Residential societies, proximity to Noida, peaceful environment",
+  bestTime: "Morning and Evening for walks and local exploration",
+  risk: "Low Risk: Generally safe and quiet; standard precautions at night",
+  highlights: [
+    "DDA Flats & Housing Societies",
+    "Local parks and community spaces",
+    "Nearby Mayur Vihar Phase 1",
+    "Close access to Noida Sector 15/16"
+  ],
+  transport: [
+    "Metro: New Ashok Nagar (Blue Line), Mayur Vihar Phase 1 (Blue & Pink Line)",
+    "Bus: Connected via NH-24 and nearby routes",
+    "Auto, e-rickshaw, and cab services available"
+  ]
+}
 };
 
 export default DB;

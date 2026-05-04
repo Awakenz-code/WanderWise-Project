@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
+
 export default function LocationInfo() {
   const [input, setInput] = useState("");
   const [data, setData] = useState({
@@ -15,22 +16,33 @@ export default function LocationInfo() {
   bestTime: "Morning & Evening",
   safety: "Moderate Risk",
 })
+const [suggestions, setSuggestions] = useState([]);
+const [activeIndex, setActiveIndex] = useState(-1);
 useEffect(() => {
   if (DB["connaught place"]) {
     setData(DB["connaught place"]);
   }
 }, []);
 
-  const handleSearch = () => {
-    const key = input.toLowerCase().trim();
+  const handleSearch = (customInput) => {
+  const key = (customInput || input).toLowerCase().trim();
 
-    if (DB[key]) {
-      setData(DB[key]);
-    } else {
-      setData(null);
-      alert("Location not found");
-    }
-  };
+  const match = Object.keys(DB).find(
+    (k) =>
+      k === key ||
+      DB[k].name.toLowerCase() === key
+  );
+
+  if (match) {
+    setData(DB[match]);
+  } else {
+    setData(null);
+    alert("Location not found ❌");
+  }
+
+  setSuggestions([]);
+  setActiveIndex(-1);
+};
 
   
 
@@ -44,18 +56,75 @@ useEffect(() => {
       </div>
 
       {/* INPUT */}
-      <div className="flex gap-2 my-4 px-5">
+      <div className="flex gap-2 my-4 px-5 relative">
         <input
-          type="text"
-          placeholder="Connaught Place, New Delhi"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSearch()} // ✅ ENTER KEY
-          className="flex-1 border rounded px-3 py-2"
-        />
+  type="text"
+  placeholder="Connaught Place, New Delhi"
+  value={input}
+  onChange={(e) => {
+    const value = e.target.value;
+    setInput(value);
+
+    if (!value.trim()) {
+      setSuggestions([]);
+      return;
+    }
+
+    const filtered = Object.keys(DB).filter((loc) =>
+      loc.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setSuggestions(filtered.slice(0, 5));
+    setActiveIndex(-1);
+  }}
+  onKeyDown={(e) => {
+    if (e.key === "ArrowDown") {
+      setActiveIndex((prev) =>
+        prev < suggestions.length - 1 ? prev + 1 : prev
+      );
+    } else if (e.key === "ArrowUp") {
+      setActiveIndex((prev) => (prev > 0 ? prev - 1 : -1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+
+      if (activeIndex >= 0) {
+        const selected = suggestions[activeIndex];
+        setInput(selected);
+        setSuggestions([]);
+        handleSearch(selected); // 🔥 FIXED
+      } else {
+        handleSearch();
+      }
+    }
+  }}
+  className="flex-1 border rounded px-3 py-2"
+/>
+{suggestions.length > 0 && (
+  <div className="absolute top-full left-5 right-5 bg-white border mt-1 rounded shadow z-20 max-h-60 overflow-y-auto">
+    
+    {suggestions.map((s, i) => (
+      <div
+        key={i}
+        onClick={() => {
+          setInput(s);
+          setSuggestions([]);
+          handleSearch(s);
+        }}
+        className={`px-4 py-2 cursor-pointer ${
+          i === activeIndex
+            ? "bg-green-100"
+            : "hover:bg-gray-100"
+        }`}
+      >
+        {DB[s].name}
+      </div>
+    ))}
+
+  </div>
+)}
 
         <button
-  onClick={handleSearch}   // ✅ NOT navigate
+  onClick={() => handleSearch()}   // ✅ NOT navigate
   className="bg-green-700 text-white px-4 rounded"
 >
   Get Info
